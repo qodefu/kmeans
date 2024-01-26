@@ -12,10 +12,10 @@ clang++ -ggdb \
     -L./raylib \
     -lraylib -lm
 
-if [[ $? -eq 0 ]]
-then
-
-  ./3d
-else
-    echo "build failure"
-fi
+##if [[ $? -eq 0 ]]
+##then
+##
+##  ./3d
+##else
+##    echo "build failure"
+##fi
