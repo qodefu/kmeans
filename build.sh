@@ -2,20 +2,15 @@
 
 clang++ -ggdb \
     -I./raylib \
-    -o kmeans kmeans.cc \
+    -o ${1} "${1}.cc" \
     -L./raylib \
-    -lraylib -lm
+    -lraylib -lm -lz
 
-clang++ -ggdb \
-    -I./raylib \
-    -o 3d 3d.cc \
-    -L./raylib \
-    -lraylib -lm
 
-##if [[ $? -eq 0 ]]
-##then
-##
-##  ./3d
-##else
-##    echo "build failure"
-##fi
+if [[ $? -eq 0 ]]
+then
+
+    ./${1} ${2} ${3} ${4}
+else
+    echo "build failure"
+fi

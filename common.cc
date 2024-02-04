@@ -292,6 +292,41 @@ static void kmeans(Samples<VEC> set, vector<Cluster<VEC>> &clusters) {
 }
 
 
+static vector<vector<string>> readcsv(string fname, int n = -1, int limit = 0) {
+    fstream file(fname, ios::in);
+    string line, word;
+    vector<vector<string>> content;
+    vector<string> row;
+    int i = 0;
+    if (file.is_open()) {
+        while(std::getline(file, line)) {
+            if (limit > 0 && i >= limit) {
+                break;
+            }
+            i++;
+            row.clear();
+            int p = n-1;
+            for (auto c: line) {
+
+                if (c == ',' && (p < 0 || p >= 1)) {
+                    row.push_back(word);
+                    word = "";
+                    p--;
+                } else {
+                    word += c;
+                }
+            }
+            row.push_back(word);
+            word="";
+            content.push_back(row);
+        }
+    }
+
+
+    return content;
+}
+
+
 
 ostream& operator<<(ostream& os,
                     const Vector3& pt)

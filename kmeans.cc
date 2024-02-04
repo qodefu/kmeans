@@ -75,33 +75,6 @@ void generate_samples() {
 //}
 
 
-vector<vector<string>> readcsv(string fname) {
-    fstream file(fname, ios::in);
-    string line, word;
-    vector<vector<string>> content;
-    vector<string> row;
-    if (file.is_open()) {
-        while(std::getline(file, line)) {
-            row.clear();
-            for (auto c: line) {
-                if (c == ',') {
-                    row.push_back(word);
-                    word = "";
-
-                } else {
-                    word += c;
-                }
-            }
-            row.push_back(word);
-            word="";
-            content.push_back(row);
-        }
-    }
-
-
-    return content;
-}
-
 
 enum Leaf_Attrs {
 LEAF_CLASS=0,
